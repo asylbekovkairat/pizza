@@ -1,24 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/header';
+import Main from './pages/main/Main';
+import Navbar from './components/Navbar/navbar.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import { useState } from 'react';
+
+
 
 function App() {
+  const [pizzas, setPizzas] = useState([])
+
+  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div>
+      <Header/>
+      <Navbar basket={basket}/>
+      <Switch>
+        <Route exact path='/'>
+          <Main setBasket={setBasket} />
+        </Route>
+        <Route exact path='/combo'>
+          Combo page
+        </Route>
+        <Route exact path='/snacks'>
+          snacks page
+        </Route>
+        <Route exact path='/desserts'>
+          desserts page
+        </Route>
+        <Route exact path='/drinks'>
+          drinks page
+        </Route>
+        <Route exact path='/other'>
+          other page
+        </Route>
+        <Route exact path='/AboutUs'>
+          AboutUs page
+        </Route>
+        <Route exact path='/contacts'>
+          Contacts page
+        </Route>
+        <Route exact path='/stock'>
+          stock page
+        </Route>
+        <Route exact path='/Live'>
+          Live page
+        </Route>
+      </Switch>
     </div>
+    </Router>
   );
 }
 
