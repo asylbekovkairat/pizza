@@ -1,0 +1,23 @@
+
+.wrapper img{
+    margin: 40px 0px;   
+    border-radius: 20px
+}
+.wrapper ul{
+    bottom: 60px
+}
+.wrapper li button:before {
+    font-size: 14px !important;
+}
+.wrapper button{
+    right: 10px;
+    font-size: 25px;
+    
+}
+.wrapper button.slick-arrow{
+    background-color: tomato;
+}
+.wrapper button.slick-arrow.slick-prev::before{
+    right: 45px;
+    color: tomato;
+}
