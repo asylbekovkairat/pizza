@@ -16,6 +16,7 @@
 }
 .order{ 
     display: flex; 
+    padding-bottom: 15px;
 } 
 .oftenOrder{ 
     height: 15px;

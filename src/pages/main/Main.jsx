@@ -79,6 +79,7 @@ export default function Main(props) {
                         name={item.name}
                         description={item.description}
                         price={item.price}
+                        image={item.image}
                         setBasket={props.setBasket}
                     />)
                 }

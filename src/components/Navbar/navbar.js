@@ -9,18 +9,7 @@ export default function Navbar (props) {
 
     const [modalActive, setModalActive] = useState(false)
 
-    const [pizzas, setPizzas] = useState([])
     
-    useEffect(() => {
-        fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setPizzas(data)
-                localStorage.setItem("menu", JSON.stringify(data))
-            })
-            .catch((error) => console.log(error))
-    }, [])
 
     return(
         <nav className={'container ' + css.navbar}> 
@@ -35,20 +24,10 @@ export default function Navbar (props) {
                 <Link className={css.navbars} to='/contacts'>Контакты</Link> 
                 <Link className={css.navbars} to='/AboutUs'>О нас</Link> 
                 <Link className={css.navbars} to='/Live'>Прямой эфир</Link> 
+                <Modal active={modalActive} setActive={setModalActive} basket={props.basket}/>
             </div>
 
-                {
-                    pizzas.map((item) => <Modal
-                        active={modalActive} 
-                        setActive={setModalActive} 
-                        basket={props.basket}
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        price={item.price}
-                    />)
-                }
+                
             
         <button className={css.bucket}  onClick={() => setModalActive(true)}>Корзина
             <span> {props.basket.length} </span>

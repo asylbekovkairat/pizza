@@ -1,11 +1,12 @@
-// сделать map в этой компоненте и удалить из навбара
-
 import css from "./modal.module.css"
-
 
 const Modal = ({ active, setActive, pizzas, ...props }) => {
 
+
+
+    console.log(props.basket);
     return (
+
         <div className={css.modal + " " + (active ? css.active : "")} onClick={() => setActive(false)}>
             <div className={css.modal__content} onClick={(e) => e.stopPropagation()}>
                 <button className={css.button__close} onClick={() => setActive(false)}>
@@ -19,32 +20,44 @@ const Modal = ({ active, setActive, pizzas, ...props }) => {
                     </h1>
                 </section>
                 <section className={css.cartlist}>
-                    <article className={css.orderedart}>
-                        <div className={css.kNccfK}></div>
-                        <div className={css.ipBfzI}>
-                            <img src="https://dodopizza-a.akamaihd.net/static/Img/Products/1453914e11424062b09885ccddc9a517_292x292.jpeg" alt="pizza" className={css.orderedimg}></img>
-                            <div className={css.orderedname}>
-                                <h3 className={css.cdZkPN}>
-                                    {props.name}
-                                </h3>
-                                <section>
-                                    <div>
-                                        {props.description}
-                                    </div>
-                                </section>
+                    {
+                        props.basket.map((pizza) => <article className={css.orderedart}>
+                            <div className={css.kNccfK}></div>
+                            <div className={css.ipBfzI}>
+                                <img src="https://dodopizza-a.akamaihd.net/static/Img/Products/1453914e11424062b09885ccddc9a517_292x292.jpeg" alt="pizza" className={css.orderedimg}></img>
+                                <div className={css.orderedname}>
+                                    <h3 className={css.cdZkPN}>
+                                        {pizza.name}
+                                    </h3>
+                                    <section>
+                                        <div className={css.orderdes}>
+                                            {pizza.description}
+                                        </div>
+                                    </section>
+                                </div>
                             </div>
                             <div className={css.orderprice}>
                                 <div className={css.dQQQbj}>
-                                    <div className={css.current}>{props.price}</div>
+                                    <div className={css.current}>
+                                        {pizza.price} сом
+                                    </div>
                                 </div>
+                                <div className={css.counter}>
+                                <button className={css.minus}>
+                                    <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><rect fill="#454B54" y="4" width="10" height="2" rx="1"></rect></svg>
+                                </button>
+                                <div className={css.ordernumber}>1</div>
+                                <button className={css.plus}>
+                                    <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><g fill="#454B54"><rect x="4" width="2" height="10" ry="1"></rect><rect y="4" width="10" height="2" rx="1"></rect></g></svg>
+                                </button>
                             </div>
-                        </div>
-                    </article>
-                </section>    
+                            </div>
+                        </article>)
+                    }
+                </section>
             </div>
         </div>
     );
 }
 
-export default Modal;
-
+export default Modal

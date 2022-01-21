@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 
 function App() {
-  const [pizzas, setPizzas] = useState([])
+  // const [pizzas, setPizzas] = useState([])
 
   const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
 
