@@ -64,11 +64,24 @@ export default function Main(props) {
         slidesToScroll: 1,
     };
 
+    function NoPigs () {
+        return (
+          <figure className={css.fig}>
+            <img src="https://dodopizza-a.akamaihd.net/site-static/dist/f30f1ab8cd7a7a54476d.svg" alt="safe"/>
+            <figtitle className={css.caption}>
+              <h1 className={css.title}>Без свинины</h1>
+              "Мы готовим без свинины"
+            </figtitle>
+          </figure>
+        )
+      }
+
     return (
         <div className='container'>
             <MySlider />
             <div className={css.oftenOrder + ' container'}> Часто заказывают</div>
             <Slider className={css.order + ' container'} {...settings}>{OrderList.map((e) => <Order img={e.img} name={e.name} cost={e.cost} />)}</Slider>
+            <NoPigs/>
 
             <div className={css.pizzawrapper}>
 

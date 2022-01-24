@@ -24,12 +24,12 @@
   bottom: 10px !important;
 } 
 .slick-dots li button::before{
-   font-size: 14px !important;
+  font-size: 14px !important;
 }
 .slick-next{
   width: 40px  !important;
   height: 40px !important;
-  right: -40px !important;
+  right: -2px !important;
 }
 .slick-next::before{
   color: black !important;
@@ -42,7 +42,8 @@
 .slick-prev{
   width: 40px  !important;
   height: 40px !important;
-  left: -40px  !important; 
+  left: -2px  !important;
+  z-index: 99; 
 }
 
 @media (max-width: 1200px) { 

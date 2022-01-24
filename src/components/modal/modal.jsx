@@ -2,9 +2,6 @@ import css from "./modal.module.css"
 
 const Modal = ({ active, setActive, pizzas, ...props }) => {
 
-
-
-    console.log(props.basket);
     return (
 
         <div className={css.modal + " " + (active ? css.active : "")} onClick={() => setActive(false)}>
@@ -16,7 +13,11 @@ const Modal = ({ active, setActive, pizzas, ...props }) => {
                 </button>
                 <section className={css.section}>
                     <h1 className={css.orderedtitle}>
-                        {props.basket.length} товаров на сом
+                        {props.basket.length} товаров на {
+                            props.basket.reduce((akk, el) => {
+                                return akk + el.price
+                            }, 0)
+                        } сом
                     </h1>
                 </section>
                 <section className={css.cartlist}>

@@ -16,6 +16,9 @@ export default function MySlider () {
         slidesToScroll: 1,
         autoplay: true,
     };
+
+    
+
     return(
         <div className="container">
         <Slider className={css.wrapper} {...settings}>

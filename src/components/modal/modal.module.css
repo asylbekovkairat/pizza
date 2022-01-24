@@ -23,7 +23,6 @@
     position: absolute;
     right: 0;
     flex: 1 1 auto;
-    height: 100%;
     display: flex;
     flex-flow: column;
 }

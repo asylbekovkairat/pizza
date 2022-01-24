@@ -1,6 +1,10 @@
+import Login from '../LogIn/login'
 import css from './header.module.css'
+import { useState } from 'react'
 
 const Header = () =>{
+  const [openActive, setOpenActive] = useState(false)
+  
   return(
     <div className={"container " + css.wrapper}>
             
@@ -29,8 +33,9 @@ const Header = () =>{
         </button>
      </div>
      <div>
-        <button className={css.log}>Войти</button>
+        <button className={css.log}  onClick={() => setOpenActive(true)}>Войти</button>
      </div>
+  <Login open={openActive} setOpen={setOpenActive}/>
   </div>
   )
 }

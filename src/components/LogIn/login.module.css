@@ -1,0 +1,90 @@
+.login{
+    height: 100vh;
+    width: 100vw;
+    background-color:rgb(0,0,0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1900;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.opened{
+    opacity: 1;
+    pointer-events: all;
+}
+.login__content{
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+    /* transform: scale(0.5); */
+    transition: 0.4s all;
+}
+.login__content.opened{
+    transform: scale(1);
+}
+.sm{
+    flex: 0 0 auto;
+}
+.label{
+    position: relative;
+}
+.phonenum{
+    margin-bottom: 8px;
+    font-family:system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+}
+.input__container{
+    position: relative;
+}
+.input{
+    background-color: rgb(255, 255, 255);
+    height: 56px;
+    padding: 16px;
+    border-radius: 12px;
+    display: block;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    box-sizing: border-box;
+    position: relative;
+    height: 48px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    width: 100%;
+    border: 1px solid rgb(226, 226, 233);
+    resize: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: Dodo, system-ui, "Segoe UI","Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    font-variant-ligatures: no-common-ligatures;
+    transition-property: background-color, border-color;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+.ig{
+    flex:1 0 auto;
+}
+.cm{
+    position: relative;
+}
+.loginbtn{
+    margin-top: 150px;
+    padding: 12px 24px;
+    width: 100%;
+    height: 50px;
+    border-radius: 9999px;
+    background-color: rgb(255, 105, 0);
+    color: rgb(255, 255, 255);
+}
+
