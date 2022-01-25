@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import { useState } from 'react';
-
+import Admin from './pages/admin/Admin.jsx'
 
 
 function App() {
@@ -18,11 +18,11 @@ function App() {
 
   return (
     <Router>
-    <div>
-      <Header/>
-      <Navbar basket={basket}/>
+    <div> 
       <Switch>
         <Route exact path='/'>
+          <Header/>
+          <Navbar basket={basket}/>
           <Main setBasket={setBasket} />
         </Route>
         <Route exact path='/combo'>
@@ -44,6 +44,8 @@ function App() {
           AboutUs page
         </Route>
         <Route exact path='/contacts'>
+        <Header/>
+        <Navbar basket={basket}/>
           Contacts page
         </Route>
         <Route exact path='/stock'>
@@ -51,6 +53,12 @@ function App() {
         </Route>
         <Route exact path='/Live'>
           Live page
+        </Route>
+        <Route path="/admin">
+          <Admin/>
+        </Route>
+        <Route path="/dashboard">
+          Dashboard
         </Route>
       </Switch>
     </div>
