@@ -14,7 +14,7 @@ export default function Navbar (props) {
     return(
         <nav className={'container ' + css.navbar}> 
             <div className={css.help}> 
-                <Link className={css.navbars} to='/pizza'>Пицца</Link> 
+                <Link className={css.navbars} to='/pizza'>изменение</Link> 
                 <Link className={css.navbars} to='/combo'>Комбо</Link> 
                 <Link className={css.navbars} to='/snacks'>Закуски</Link> 
                 <Link className={css.navbars} to='/desserts'>Десерты</Link> 
