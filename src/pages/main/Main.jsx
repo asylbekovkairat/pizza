@@ -8,21 +8,9 @@ import Pizzacard from '../../components/pizzaCard/PizzaCard.jsx';
 import { useState, useEffect } from 'react';
 
 
-export default function Main(props) {
+export default function Main({pizzas}, props) {
     
-    const [pizzas, setPizzas] = useState([])
     
-    useEffect(() => {
-        fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setPizzas(data)
-                localStorage.setItem("menu", JSON.stringify(data))
-            })
-            .catch((error) => console.log(error))
-    }, [])
-
     const OrderList = [
 
         {

@@ -7,12 +7,23 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Admin from './pages/admin/Admin.jsx'
-
+import Dashboard from './pages/dashboard/dashboard';
 
 function App() {
-  // const [pizzas, setPizzas] = useState([])
+  const [pizzas, setPizzas] = useState([])
+    
+    useEffect(() => {
+        fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setPizzas(data)
+                localStorage.setItem("menu", JSON.stringify(data))
+            })
+            .catch((error) => console.log(error))
+    }, [])
 
   const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
 
@@ -23,7 +34,7 @@ function App() {
         <Route exact path='/'>
           <Header/>
           <Navbar basket={basket}/>
-          <Main setBasket={setBasket} />
+          <Main setBasket={setBasket} pizzas={pizzas}/>
         </Route>
         <Route exact path='/combo'>
           Combo page
@@ -58,7 +69,7 @@ function App() {
           <Admin/>
         </Route>
         <Route path="/dashboard">
-          Dashboard
+          <Dashboard pizzas={pizzas}/> 
         </Route>
       </Switch>
     </div>
