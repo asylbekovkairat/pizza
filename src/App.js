@@ -5,7 +5,8 @@ import Navbar from './components/Navbar/navbar.js';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Admin from './pages/admin/Admin.jsx'
@@ -18,7 +19,6 @@ function App() {
         fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setPizzas(data)
                 localStorage.setItem("menu", JSON.stringify(data))
             })
@@ -26,6 +26,7 @@ function App() {
     }, [])
 
   const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+  
 
   return (
     <Router>
@@ -66,10 +67,10 @@ function App() {
           Live page
         </Route>
         <Route path="/admin">
-          <Admin/>
+          <Admin authorized={false}/>
         </Route>
         <Route path="/dashboard">
-          <Dashboard pizzas={pizzas}/> 
+          <Dashboard pizzas={pizzas} authorized={false}/> 
         </Route>
       </Switch>
     </div>

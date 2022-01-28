@@ -3,10 +3,11 @@
     padding: 0px;
     margin: 0;
 }
-.dashboard-Dbeditwrapper div{
+.Dbeditwrapper{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
 }
 .help{ 
     display: flex; 

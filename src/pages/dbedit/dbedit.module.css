@@ -1,15 +1,11 @@
 .wrapper {
     width: 230px;
-    height: 20px;
+    height: 450px;
     padding: 15px;
     margin: 15px 0;
     margin-left: 39px;
 }
-.dashboard-Dbeditwrapper div{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+
 .imgwrapper {
     width: 100%;
     height: 230px;
