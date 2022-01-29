@@ -8,7 +8,7 @@
     width: 100%;
     height: 230px;
 }
-img:hover{
+.cardimg:hover{
     margin-top: -2px;
 }
 .imgwrapper > img{

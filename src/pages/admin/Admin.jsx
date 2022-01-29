@@ -3,29 +3,35 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import css from './admin.module.css'
 import { useState } from 'react';
 
-const Admin = ({ authorized }) => {
+const Admin = ({ setIsAuth}) => {
   const [user, setUser] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const history = useHistory()
+  const [isDisabled, setIsDisabled] = useState(false)
   const submit = (e) => {
     e.preventDefault();
-    if(authorized){
-      return history.push("/dashboard")
-    }
-    
+    // if(authorized){
+    //   return history.push("/dashboard")
+    // }
+    setIsDisabled(true)
     fetch("https://pizza-app-ulan.herokuapp.com/admin", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         login: user,
         password: password
       })
     })
+      .finally(() => {
+        setIsDisabled(false)
+      })
       .then((res) => res.json())
       .then((data) => {
         // TODO: remove push after login logic
         if (data?.token) {
-          console.log("success");
+          setIsAuth(data)
         } else {
           setError(data.msg)
         }
@@ -56,7 +62,7 @@ const Admin = ({ authorized }) => {
             </label>
           </div>
           <div className={css.cm}>
-            <button className={css.loginbtn}>Подтвердить</button>
+            <button disabled={isDisabled} className={css.loginbtn}>Подтвердить</button>
           </div>
         </div>
         <div className='error'>{error}</div>

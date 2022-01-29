@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import Dbedit from '../dbedit/dbedit.jsx';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Redirect } from 'react-router-dom';
-const Dashboard = ({ authorized }, ...props) => {
-    
+const Dashboard = ({ authorized,setIsAuth, ...props }) => {
     const history = useHistory()
     const submit = (e) => {
         e.preventDefault();
-        // todo remove after auth
-        history.push('/')
+        // todo remove after 
+        setIsAuth(null)
     }
-    if (!authorized) {
-        return <Redirect to="/admin" />
-    }
+    // if (!authorized) {
+    //     return <Redirect to="/admin" />
+    // }
     return (
         <div>
             <nav className={'container ' + css.navbar}>

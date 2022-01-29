@@ -11,10 +11,12 @@ import {
 import { useState, useEffect } from 'react';
 import Admin from './pages/admin/Admin.jsx'
 import Dashboard from './pages/dashboard/dashboard';
+import Publicroute from './route/PublicRoute';
+import Privateroute from './route/PrivateRoute';
 
 function App() {
   const [pizzas, setPizzas] = useState([])
-    
+  
     useEffect(() => {
         fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
             .then((res) => res.json())
@@ -26,7 +28,11 @@ function App() {
     }, [])
 
   const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
-  
+  const [isAuth, setIsAuth] = useState(JSON.parse(localStorage.getItem("auth") || null));
+
+  useEffect(() => {
+    localStorage.setItem("auth", JSON.stringify(isAuth))
+  }, [isAuth])
 
   return (
     <Router>
@@ -66,12 +72,14 @@ function App() {
         <Route exact path='/Live'>
           Live page
         </Route>
-        <Route path="/admin">
-          <Admin authorized={false}/>
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard pizzas={pizzas} authorized={false}/> 
-        </Route>
+        <Publicroute path="/admin" auth={isAuth} component={() => <Admin setIsAuth={setIsAuth} />}/>
+        {/* <Route path="/admin">
+          <Admin authorized={false} setIsAuth={setIsAuth}/>
+        </Route> */}
+        <Privateroute path="/dashboard" auth={isAuth} component={() => <Dashboard setIsAuth={setIsAuth} pizzas={pizzas}/>}/>
+        {/* <Route path="/dashboard">
+          <Dashboard pizzas={pizzas} authorized={true}/> 
+        </Route> */}
       </Switch>
     </div>
     </Router>

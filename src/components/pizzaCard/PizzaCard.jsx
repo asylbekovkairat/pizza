@@ -13,7 +13,7 @@ const Pizzacard = (props) => {
     return (
         <div className={css.wrapper}>
             <div className={css.imgwrapper}>
-                <img src={props.image}/>
+                <img src={props.image} className={css.cardimg}/>
             </div>
             <div className={css.name}>
                 {props.name}
