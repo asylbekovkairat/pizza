@@ -1,50 +1,54 @@
-.wrapper{
+.wrapper {
     width: 230px;
+    height: 450px;
     padding: 15px;
     margin: 15px 0;
     margin-left: 39px;
 }
-.imgwrapper{
+
+.imgwrapper {
     width: 100%;
     height: 230px;
 }
-.cardimg:hover{
-    margin-top: -2px;
-}
-.imgwrapper > img{
+
+.imgwrapper>img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-.name{
+
+.name {
     font-size: 22px;
     font-family: 'Be Vietnam Pro', sans-serif;
     color: rgba(red, green, blue, alpha);
 }
-.description{
+
+.description {
     margin-top: 10px;
     color: rgb(153, 153, 153);
     font-size: 15px;
 }
+
 .price {
-    
     font-size: 50px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-weight: 500;
 }
-.footer{
+
+.footer {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
-.pizzabtn{
+
+.pizzabtn {
     border-radius: 30px;
     width: 80px;
     height: 40px;
     color: tomato;
 }
-.pizzabtn:hover{
+
+.pizzabtn:hover {
     background-color: rgb(243, 185, 175);
 }
 
-/* arr.map(() => <Pi) */

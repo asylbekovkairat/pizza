@@ -44,18 +44,44 @@ const Modal = ({ active, setActive, pizzas, ...props }) => {
                                     </div>
                                 </div>
                                 <div className={css.counter}>
-                                <button className={css.minus}>
-                                    <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><rect fill="#454B54" y="4" width="10" height="2" rx="1"></rect></svg>
-                                </button>
-                                <div className={css.ordernumber}>1</div>
-                                <button className={css.plus}>
-                                    <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><g fill="#454B54"><rect x="4" width="2" height="10" ry="1"></rect><rect y="4" width="10" height="2" rx="1"></rect></g></svg>
-                                </button>
-                            </div>
+                                    <button className={css.minus}>
+                                        <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><rect fill="#454B54" y="4" width="10" height="2" rx="1"></rect></svg>
+                                    </button>
+                                    <div className={css.ordernumber}>1</div>
+                                    <button className={css.plus}>
+                                        <svg width="10" height="10" viewBox="0 0 10 10" class="icon"><g fill="#454B54"><rect x="4" width="2" height="10" ry="1"></rect><rect y="4" width="10" height="2" rx="1"></rect></g></svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>)
                     }
                 </section>
+                <div className={css.footer}>
+                    <section className={css.xtkza}>
+                        <div className={css.subtotal}>
+                            <div className={css.info}>
+                                {props.basket.length} товаров
+                                <span>{
+                                    props.basket.reduce((akk, el) => {
+                                        return akk + el.price
+                                    }, 0)
+                                } сом </span>
+                            </div>
+                        </div>
+                        <div className={css.info}>
+                            Сумма заказа
+                            <span className={css.footersum}>{
+                                props.basket.reduce((akk, el) => {
+                                    return akk + el.price
+                                }, 0)
+                            } сом </span>
+                        </div>
+                        <button className={css.bttn}> 
+                            <p>К оформлению заказа</p>
+                        </button>
+                    </section>
+                </div>
+
             </div>
         </div>
     );
