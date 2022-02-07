@@ -3,13 +3,16 @@ import css from './admin.module.css'
 import { useState } from 'react';
 import axios from "axios"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch } from "react-redux"
 
-
-const Admin = ({ setIsAuth }) => {
+const Admin = () => {
   const [user, setUser] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
+
+  const dispatch = useDispatch()
+
   const submit = (e) => {
     e.preventDefault();
     setIsDisabled(true)
@@ -22,7 +25,11 @@ const Admin = ({ setIsAuth }) => {
       })
       .then((res) => {
         if (res.data?.token) {
-          setIsAuth(res.data)
+          // setIsAuth(res.data)
+          dispatch({
+            type: "success auth",
+            payload: res.data
+          })
         } else {
           setError(res.data.msg)
         }
