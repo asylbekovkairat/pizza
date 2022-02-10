@@ -10,7 +10,7 @@ import { useSelector } from "react-redux"
 export default function Main(props) {
 
   const pizzas = useSelector((state) => state.pizzas.data)
-
+  
   const OrderList = [
 
     {
@@ -70,6 +70,7 @@ export default function Main(props) {
       <div className={css.oftenOrder + ' container'}> Часто заказывают</div>
       <Slider className={css.order + ' container'} {...settings}>{OrderList.map((e) => <Order img={e.img} name={e.name} cost={e.cost} />)}</Slider>
       <NoPigs />
+      <div className={css.pizzas + 'container'}>Пицца</div>
 
       <div className={css.pizzawrapper}>
 

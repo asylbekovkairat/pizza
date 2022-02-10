@@ -15,32 +15,31 @@ import Publicroute from './route/PublicRoute';
 import Privateroute from './route/PrivateRoute';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import Api from './api/api';
+import { menuPizzaAC } from './redux/actions/pizzaAction';
 
 function App() {
+
   const dispatch = useDispatch()
   const [pizzas, setPizzas] = useState([])
     useEffect(() => {
-        fetch("https://61dd7484f60e8f0017668817.mockapi.io/pizza-card")
-          .then((res) => res.json())
-          .then((data) => {
-            setPizzas(data)
-              localStorage.setItem("menu", JSON.stringify(data))
-              // dispatch( {type: 'true menu'})
-          })
+        Api.getAllPizzas()
+          .then((res) => {
+            dispatch(menuPizzaAC(res.data))
+        })
           .catch((error) => console.log(error))
     }, [])
 
-  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+    const basketData = useSelector((state) => state.basket.data || [])
 
-  const authData = useSelector((state) => state.auth.data)
-  useEffect(() => {
-    localStorage.setItem("auth", JSON.stringify(authData))
-  }, [authData])
-
-  // const pizzaData = useSelector((state) => state.pizza.data)
-  // useEffect(() => {
-  //   localStorage.setItem("menu", JSON.stringify(pizzaData))
-  // }, [pizzaData] )
+    useEffect(() => {
+      localStorage.setItem("basket", JSON.stringify(basketData))
+    }, [basketData])
+    
+    const authData = useSelector((state) => state.auth.data)
+    useEffect(() => {
+      localStorage.setItem("auth", JSON.stringify(authData))
+    }, [authData])
 
   return (
     <Router>
@@ -49,7 +48,7 @@ function App() {
         <Route exact path='/'>
           <Header/>
           <Navbar/>
-          <Main setBasket={setBasket} pizzas={pizzas}/>
+          <Main  pizzas={pizzas}/>
         </Route>
         <Route exact path='/combo'>
           Combo page
@@ -71,7 +70,7 @@ function App() {
         </Route>
         <Route exact path='/contacts'>
         <Header/>
-        <Navbar basket={basket}/>
+        <Navbar />
           Contacts page
         </Route>
         <Route exact path='/stock'>

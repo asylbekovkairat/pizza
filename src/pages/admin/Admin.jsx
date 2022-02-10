@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from "axios"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch } from "react-redux"
+import { successAuth } from './../../redux/actions/authActions';
 
 const Admin = () => {
   const [user, setUser] = useState("")
@@ -26,10 +27,7 @@ const Admin = () => {
       .then((res) => {
         if (res.data?.token) {
           // setIsAuth(res.data)
-          dispatch({
-            type: "success auth",
-            payload: res.data
-          })
+          dispatch(successAuth(res.data))
         } else {
           setError(res.data.msg)
         }
