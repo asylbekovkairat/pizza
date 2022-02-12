@@ -7,12 +7,11 @@ import { Order } from "../../components/Order/order.js"
 import Pizzacard from '../../components/pizzaCard/PizzaCard.jsx';
 import { useSelector } from "react-redux"
 
-export default function Main(props) {
 
+export default function Main(props) {
   const pizzas = useSelector((state) => state.pizzas.data)
   
   const OrderList = [
-
     {
       img: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/730db614-8678-4465-859c-bd8c9d8ef427.jpg',
       name: 'Пеперони',
@@ -44,6 +43,7 @@ export default function Main(props) {
       cost: '149 сом'
     }
   ]
+
   const settings = {
     dots: false,
     infinite: true,
@@ -75,9 +75,10 @@ export default function Main(props) {
       <div className={css.pizzawrapper}>
 
         {
-          pizzas.map((item) => <Pizzacard
+          pizzas &&
+          pizzas?.map((item) => <Pizzacard
             key={item.id}
-            id={item.id}
+            // id={item.id}
             name={item.name}
             description={item.description}
             price={item.price}

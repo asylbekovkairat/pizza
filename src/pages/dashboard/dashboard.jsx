@@ -8,7 +8,7 @@ import { authLogout } from '../../redux/actions/authActions';
 
 const Dashboard = ({ authorized, setIsAuth, ...props }) => {
   const dispatch = useDispatch()
-  const pizzas = useSelector((state) => state.pizzas.data)
+  const pizzas = useSelector((state) => state.pizzas.data || [])
 
   return (
     <div>

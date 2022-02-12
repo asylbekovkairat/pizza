@@ -1,12 +1,13 @@
-import { MENU_PIZZA } from "../actionTypes"
+import { GET_ALL_PIZZA } from "../actionTypes"
 
 const pizzaState = {
-    data: JSON.parse(localStorage.getItem('menu')) || [],
-  }
+  isLoading:true,
+  data: null
+}
   
   export const pizzaReducer = (state = pizzaState, action) => {
     switch (action.type){
-      case MENU_PIZZA:
+      case GET_ALL_PIZZA:
         return {
           ...state, data: action.payload
         }

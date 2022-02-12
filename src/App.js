@@ -6,28 +6,20 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Admin from './pages/admin/Admin.jsx'
 import Dashboard from './pages/dashboard/dashboard';
 import Publicroute from './route/PublicRoute';
 import Privateroute from './route/PrivateRoute';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import Api from './api/api';
-import { menuPizzaAC } from './redux/actions/pizzaAction';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllPizzasAsync } from './redux/actions/pizzaAction';
 
 function App() {
-
   const dispatch = useDispatch()
-  const [pizzas, setPizzas] = useState([])
+  const [pizzas] = useState([useSelector((state) => state.pizzas.data)])
     useEffect(() => {
-        Api.getAllPizzas()
-          .then((res) => {
-            dispatch(menuPizzaAC(res.data))
-        })
-          .catch((error) => console.log(error))
+      dispatch(getAllPizzasAsync())
     }, [])
 
     const basketData = useSelector((state) => state.basket.data || [])
@@ -48,7 +40,7 @@ function App() {
         <Route exact path='/'>
           <Header/>
           <Navbar/>
-          <Main  pizzas={pizzas}/>
+          <Main />
         </Route>
         <Route exact path='/combo'>
           Combo page

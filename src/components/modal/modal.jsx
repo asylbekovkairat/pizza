@@ -7,8 +7,7 @@ const Modal = ({ active, setActive,}) => {
   const basket = useSelector((state) => state.basket.data)
 
   return (
-
-    <div className={css.modal + " " + (active ? css.active : "")} onClick={() => setActive(false)}>
+    <div className={css.modal + " " + ( active ? css.active : "")}  onClick={() => setActive(false)}>
       <div className={css.modal__content} onClick={(e) => e.stopPropagation()}>
         <button className={css.button__close} onClick={() => setActive(false)}>
           <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
