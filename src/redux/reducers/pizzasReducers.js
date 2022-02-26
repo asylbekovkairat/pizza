@@ -1,7 +1,7 @@
 import { GET_ALL_PIZZA } from "../actionTypes"
 
 const pizzaState = {
-  isLoading:true,
+  isLoading:false,
   data: null
 }
   
@@ -9,7 +9,7 @@ const pizzaState = {
     switch (action.type){
       case GET_ALL_PIZZA:
         return {
-          ...state, data: action.payload
+          ...state, data: action.payload, isLoading: false
         }
       default:
         return state  

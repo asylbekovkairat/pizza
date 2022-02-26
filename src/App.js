@@ -72,13 +72,7 @@ function App() {
           Live page
         </Route>
         <Publicroute path="/admin"  component={() => <Admin  />}/>
-        {/* <Route path="/admin">
-          <Admin authorized={false} setIsAuth={setIsAuth}/>
-        </Route> */}
         <Privateroute path="/dashboard" component={() => <Dashboard pizzas={pizzas}/>}/>
-        {/* <Route path="/dashboard">
-          <Dashboard pizzas={pizzas} authorized={true}/> 
-        </Route> */}
       </Switch>
     </div>
     </Router>

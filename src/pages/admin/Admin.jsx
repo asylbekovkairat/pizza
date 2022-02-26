@@ -26,7 +26,6 @@ const Admin = () => {
       })
       .then((res) => {
         if (res.data?.token) {
-          // setIsAuth(res.data)
           dispatch(successAuth(res.data))
         } else {
           setError(res.data.msg)

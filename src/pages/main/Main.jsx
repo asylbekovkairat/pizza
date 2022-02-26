@@ -78,7 +78,6 @@ export default function Main(props) {
           pizzas &&
           pizzas?.map((item) => <Pizzacard
             key={item.id}
-            // id={item.id}
             name={item.name}
             description={item.description}
             price={item.price}

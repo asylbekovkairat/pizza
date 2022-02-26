@@ -1,6 +1,5 @@
 import { SUCCESS_AUTH, AUTH_LOGOUT } from './../actionTypes';
 
-
 export const successAuth =  (payload) => ({
     type: SUCCESS_AUTH ,
     payload
