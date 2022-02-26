@@ -5,25 +5,42 @@ import Navbar from './components/Navbar/navbar.js';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
-import { useState } from 'react';
-
-
+import { useState, useEffect } from 'react';
+import Admin from './pages/admin/Admin.jsx'
+import Dashboard from './pages/dashboard/dashboard';
+import Publicroute from './route/PublicRoute';
+import Privateroute from './route/PrivateRoute';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllPizzasAsync } from './redux/actions/pizzaAction';
 
 function App() {
-  // const [pizzas, setPizzas] = useState([])
+  const dispatch = useDispatch()
+  const [pizzas] = useState([useSelector((state) => state.pizzas.data)])
+    useEffect(() => {
+      dispatch(getAllPizzasAsync())
+    }, [])
 
-  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+    const basketData = useSelector((state) => state.basket.data || [])
+
+    useEffect(() => {
+      localStorage.setItem("basket", JSON.stringify(basketData))
+    }, [basketData])
+    
+    const authData = useSelector((state) => state.auth.data)
+    useEffect(() => {
+      localStorage.setItem("auth", JSON.stringify(authData))
+    }, [authData])
 
   return (
     <Router>
-    <div>
-      <Header/>
-      <Navbar basket={basket}/>
+    <div> 
       <Switch>
         <Route exact path='/'>
-          <Main setBasket={setBasket} />
+          <Header/>
+          <Navbar/>
+          <Main />
         </Route>
         <Route exact path='/combo'>
           Combo page
@@ -44,6 +61,8 @@ function App() {
           AboutUs page
         </Route>
         <Route exact path='/contacts'>
+        <Header/>
+        <Navbar />
           Contacts page
         </Route>
         <Route exact path='/stock'>
@@ -52,6 +71,8 @@ function App() {
         <Route exact path='/Live'>
           Live page
         </Route>
+        <Publicroute path="/admin"  component={() => <Admin  />}/>
+        <Privateroute path="/dashboard" component={() => <Dashboard pizzas={pizzas}/>}/>
       </Switch>
     </div>
     </Router>
