@@ -26,7 +26,6 @@ export default function Navbar () {
                 <Link className={css.navbars} to='/Live'>Прямой эфир</Link> 
                 <Modal active={modalActive} setActive={setModalActive} />
             </div>
-
         <button className={css.bucket}  onClick={() => setModalActive(true)}>Корзина
             <span> {basket.length} </span>
         </button>      

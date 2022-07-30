@@ -21,7 +21,7 @@ export default function MySlider () {
     return(
         <div className="container">
         <Slider className={css.wrapper} {...settings}>
-          {slides.map((item) => <img src={item} alt="n"/>)}
+          {slides.map((item, index) => <img src={item} alt="n" key={index}/>)}
         </Slider>
       </div>
     )
